@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mytest
+spec:
+  selector:
+    app: mytest
+  ports:
+  - port: 80       # 서비스 포트
+    targetPort: 80   # 타켓, 즉 pod의 포트
+    protocol: TCP
+    name: http
