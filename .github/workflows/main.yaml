@@ -28,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: hyper2012/myapp:{{ steps.yaml-data.outputs.data }}
+          tags: hyper2012/myapp:${{ steps.yaml-data.outputs.data }}
