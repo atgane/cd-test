@@ -16,9 +16,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Run read-yaml action
+        id: yaml-data
+        uses: jbutcher5/read-yaml@main      # You may wish to replace main with a version tag such as '1.6' etc.
+        with:
+          file: './chart/values.yaml'          # File to read from
+          key-path: '["image", "tag"]' # Access the runs key then the using key and retuns the value.
+
       - name: Build & Push
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: hyper2012/myapp:latest
+          tags: hyper2012/myapp:{{ steps.yaml-data.outputs.data }}
