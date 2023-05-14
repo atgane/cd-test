@@ -15,6 +15,6 @@ type testHandler struct {
 }
 
 func (h *testHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	str := "version: 1.1\nYour Request Path is " + req.URL.Path
+	str := "version: 0.1.0\nYour Request Path is " + req.URL.Path
 	w.Write([]byte(str))
 }
